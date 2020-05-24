@@ -3,7 +3,7 @@ package org.launchcode.techjobs_oo;
 import java.util.Objects;
 
 public class CoreCompetency {
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
 
