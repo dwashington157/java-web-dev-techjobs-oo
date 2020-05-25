@@ -79,9 +79,7 @@ public class Job {
         return UniqueId;
     }
 
-    public void setUniqueId(int uniqueId) {
-        UniqueId = uniqueId;
-    }
+
 
 
 
@@ -119,5 +117,29 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+//        String output = "";
+//        if (name.equals(output)) {
+//            name ="Data not available";
+//        }
+        String output = "";
+        if (name == null || name.equals("")){
+          name ="data not available";
+        } else {output += name;
+        }
+//       if (employer.getValue().equals("") || employer.getValue() == null) {
+//            employer.setValue("Data not available");
+//        }
+        return "\n"+
+                "ID: " +id+ "\n"+
+                "Name: " +name+"\n"+
+                "Employer: "+employer+"\n"+
+                "Location: " +location+"\n"+
+                "Position Type: " +positionType+"\n" +
+                "Core Competency: " +coreCompetency+"\n";
+
     }
 }

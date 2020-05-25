@@ -27,7 +27,7 @@ public class JobTest {
 
     @Before
     public void createJobSame(){
-        jobFieldsOne = new Job(30,"Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        jobFieldsOne = new Job(30,"", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
     }
 
@@ -38,8 +38,8 @@ public class JobTest {
     }
 
     @Test
-    public void jobIdNotTheSame(){
-        assertFalse(job_test.equals(job_testTwo));
+    public void testSettingJobId(){
+        assertEquals(job_test.getId(),job_testTwo.getId(), 1);
 
 }
 
@@ -50,7 +50,7 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields(){
-        Job job_fields= new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job_fields= new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(job_fields instanceof Job);
     }
 
@@ -61,6 +61,30 @@ public class JobTest {
 
     }
 
+    @Test
+    public void testToStringBeginsWithBlankLine(){
+
+        assertTrue(jobFieldsOne.toString().startsWith("\n"));
+
+    }
 
 
+    @Test
+    public void testToStringEndsBlankLine(){
+
+        assertTrue(jobFieldsOne.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testStringContains(){
+
+        assertTrue(jobFieldsOne.toString().contains("ID: "));
+    }
+
+    @Test
+    public void testStringEmpty(){
+
+        assertTrue(jobFieldsOne.toString().contains("data not available"));
+        System.out.println(jobFieldsOne);
+    }
 }
