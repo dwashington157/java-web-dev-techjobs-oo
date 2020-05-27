@@ -7,24 +7,36 @@ public class Job {
     private int id;
     private static int nextId = 1;
 
+
+
     private String name;
     private Employer employer;
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
-    private int UniqueId;
 
-    public Job(String product_tester, Employer acme, Location desert, PositionType quality_control, CoreCompetency persistence) {
+
+
+    public Job() {
+        this.id = nextId;
+        nextId++;
     }
+
+
+    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
+        this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
+    }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public static int getNextId() {
@@ -75,35 +87,9 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public int getUniqueId() {
-        return UniqueId;
-    }
 
 
 
-
-
-
-    // TODO: Add constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
-
-    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.id = id;
-        this.name = name;
-        this.employer = employer;
-        this.location = location;
-        this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
-    }
-
-    public Job(int uniqueId) {
-        UniqueId = uniqueId;
-    }
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
 
 
     @Override
@@ -126,20 +112,28 @@ public class Job {
 //            name ="Data not available";
 //        }
         String output = "";
-        if (name == null || name.equals("")){
-          name ="data not available";
-        } else {output += name;
-        }
+        if (name == null || name.equals("")) {
+            name = "data not available";
+        } else {
+            output += name;
+
+            if (employer.getValue() == null || employer.getValue().equals("")) {
+                output = "data not available";
+            } else {
+                output += employer.getValue();
+            }
 //       if (employer.getValue().equals("") || employer.getValue() == null) {
 //            employer.setValue("Data not available");
 //        }
-        return "\n"+
-                "ID: " +id+ "\n"+
-                "Name: " +name+"\n"+
-                "Employer: "+employer+"\n"+
-                "Location: " +location+"\n"+
-                "Position Type: " +positionType+"\n" +
-                "Core Competency: " +coreCompetency+"\n";
+            return "\n" +
+                    "ID: " + id + "\n" +
+                    "Name: " + name + "\n" +
+                    "Employer: " + employer + "\n" +
+                    "Location: " + location + "\n" +
+                    "Position Type: " + positionType + "\n" +
+                    "Core Competency: " + coreCompetency + "\n";
 
+        }
+        return output;
     }
 }

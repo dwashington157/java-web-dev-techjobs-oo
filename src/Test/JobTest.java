@@ -5,6 +5,9 @@ import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 import org.launchcode.techjobs_oo.Location;
 import org.launchcode.techjobs_oo.Job;
+
+import javax.lang.model.element.Name;
+
 import static org.junit.Assert.*;
 
 
@@ -15,14 +18,11 @@ public class JobTest {
     Job jobFieldsTwo;
 
 
-    @Before
-    public void createJobObject(){
-        job_test = new Job(30);
-    }
+
 
     @Before
     public void createJobObjectTwo(){
-        job_testTwo = new Job(31);
+        job_testTwo = new Job();
     }
 
     @Before
@@ -45,14 +45,14 @@ public class JobTest {
 
     @Test
     public void testIfIdGiven(){
-        assertEquals(30, job_test.getUniqueId(),.001);
+        assertEquals(30, jobFieldsOne.getId(),.001);
     }
 
-    @Test
-    public void testJobConstructorSetsAllFields(){
-        Job job_fields= new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertTrue(job_fields instanceof Job);
-    }
+//    @Test
+//    public void testJobConstructorSetsAllFields(){
+//        Job job_fields = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        assertTrue(job_fields instanceof Job);
+//    }
 
 
     @Test
