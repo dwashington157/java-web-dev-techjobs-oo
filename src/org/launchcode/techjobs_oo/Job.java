@@ -23,7 +23,7 @@ public class Job {
     }
 
 
-    public Job(int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -107,24 +107,22 @@ public class Job {
 
     @Override
     public String toString() {
-//        String output = "";
-//        if (name.equals(output)) {
-//            name ="Data not available";
-//        }
-        String output = "";
+
         if (name == null || name.equals("")) {
             name = "data not available";
-        } else {
-            output += name;
+        }
 
-            if (employer.getValue() == null || employer.getValue().equals("")) {
-                output = "data not available";
-            } else {
-                output += employer.getValue();
-            }
-//       if (employer.getValue().equals("") || employer.getValue() == null) {
-//            employer.setValue("Data not available");
-//        }
+        if (employer.getValue() == null || employer.getValue().equals("")) {
+            employer.setValue("data not available");
+        }
+
+        if (location.getValue() == null || location.getValue().equals("")) {
+            location.setValue("data not available");
+        }
+        if (positionType.getValue() == null || positionType.getValue().equals("")) {
+            positionType.setValue("data not available");
+        }
+
             return "\n" +
                     "ID: " + id + "\n" +
                     "Name: " + name + "\n" +
@@ -134,6 +132,5 @@ public class Job {
                     "Core Competency: " + coreCompetency + "\n";
 
         }
-        return output;
+
     }
-}

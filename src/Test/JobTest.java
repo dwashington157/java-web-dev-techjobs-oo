@@ -19,23 +19,14 @@ public class JobTest {
 
 
 
-
-    @Before
-    public void createJobObjectTwo(){
-        job_testTwo = new Job();
-    }
-
     @Before
     public void createJobSame(){
-        jobFieldsOne = new Job(30,"", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
+        job_test =new Job();
+        job_testTwo = new Job();
+        jobFieldsOne = new Job("", new Employer("ACMe"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        jobFieldsTwo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
-    @Before
-    public void createJobSameTwo(){
-        jobFieldsTwo = new Job(31,"Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-    }
 
     @Test
     public void testSettingJobId(){
@@ -43,16 +34,13 @@ public class JobTest {
 
 }
 
-    @Test
-    public void testIfIdGiven(){
-        assertEquals(30, jobFieldsOne.getId(),.001);
-    }
 
-//    @Test
-//    public void testJobConstructorSetsAllFields(){
-//        Job job_fields = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        assertTrue(job_fields instanceof Job);
-//    }
+
+    @Test
+    public void testJobConstructorSetsAllFields(){
+        Job job_fields = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(job_fields instanceof Job);
+    }
 
 
     @Test
@@ -78,7 +66,7 @@ public class JobTest {
     @Test
     public void testStringContains(){
 
-        assertTrue(jobFieldsOne.toString().contains("ID: "));
+//        assertTrue(jobFieldsOne.toString().contains(""));
     }
 
     @Test
